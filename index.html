@@ -1,0 +1,62 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Bootstrap Star Rating</title>  
+    <!--  Add Bootstrap cdn  -->  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+    <!--  Add bootstrap icon Library  -->  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <style>  
+        .checked {  
+            color: yellow;  
+            font-size: 20px;  
+        }  
+        .unchecked {  
+            font-size: 20px;  
+        }  
+    </style>  
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var stars = document.querySelectorAll('.fa-star');
+            var ratingDisplay = document.querySelector('#rating-display');
+
+            stars.forEach(function(star) {
+                star.addEventListener('click', function() {
+                    if (star.classList.contains('checked')) {
+                        star.classList.remove('checked');
+                        star.classList.add('unchecked');
+                    } else {
+                        star.classList.remove('unchecked');
+                        star.classList.add('checked');
+                    }
+
+                    updateRatingDisplay();
+                });
+            });
+
+            function updateRatingDisplay() {
+                var checkedStars = document.querySelectorAll('.fa-star.checked').length;
+                ratingDisplay.innerHTML = "Rating: " + checkedStars + " stars";
+            }
+        });
+    </script>
+</head>  
+<body> 
+     <h1 align="center">Bootstrap Star Rating Example</h1>  
+     <h2 align="center"><font color='blue'>Docker Image is Build Using Jenkins Pipeline</font></h2>
+     <h4 id="rating-display">Rating: 2 stars</h4><br><br>
+    <!-- To display checked star rating icons -->  
+    <span class="fa fa-star checked"></span>  
+    <span class="fa fa-star checked"></span>  
+    <span class="fa fa-star unchecked"></span>  
+    <span class="fa fa-star unchecked"></span>  
+    <!-- To display unchecked star rating icons -->  
+    <span class="fa fa-star unchecked"></span>  
+
+    
+</body>  
+</html>
